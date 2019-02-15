@@ -1,0 +1,83 @@
+<div class="col-lg-12">
+    <div class="col-lg-6">
+        <div class="form-group">
+            <label for="manufacturerT">Manufacturer</label>
+            <select class="form-control" id="manufacturerT" ng-model="rule.selectedManufacturerT" 
+                    ng-options="manufacture.manufacturerName for manufacture in manufactures">              
+            </select>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group">
+            <label for="deviceTypeT">Device Type</label>
+            <select class="form-control" id="deviceTypeT" ng-model="rule.selectedDeviceTypeT" 
+                    ng-options="deviceType.deviceType for deviceType in rule.selectedManufacturerT.deviceTypes"
+                    ng-change="getDevices(rule.selectedManufacturerT, rule.selectedDeviceTypeT)">                 
+            </select>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group">
+            <label for="device">Device</label>
+            <select class="form-control" id="device" ng-model="rule.selectedDeviceT"
+                    ng-options="device.name for device in rule.selectedDeviceTypeT.deviceList">             
+            </select>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group">
+            <label for="triggerT">Trigger Name</label>
+            <select class="form-control" id="triggerT" ng-model="rule.selectedTriggerT"
+                    ng-options="attribute.label for attribute in rule.selectedDeviceTypeT.attribute">                 
+            </select>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group">
+            <label for="operatorT">Operator</label>
+            <select class="form-control" id="operatorT" ng-model="rule.selectedOperatorT"
+                    ng-options="operator.operatorType for operator in rule.selectedTriggerT.operators">                 
+            </select>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group">
+            <label for="targetValueT">Target Value</label>
+
+            <div ng-switch="rule.selectedTriggerT.targetValue.type">
+                <div ng-switch-when="LIST" >
+                    <select id="targetValueT" class="form-control" ng-model="rule.selectedTargetValueT"
+                            ng-options="targetValue for targetValue in rule.selectedTriggerT.targetValue.values">
+                    </select>
+                </div>
+                <div ng-switch-when="TEXT">
+                    <input type="text" class="form-control" id="targetValueT" ng-model="rule.selectedTargetValueT">
+                </div>
+                <div ng-switch-when="RANGE">
+                    <rzslider rz-slider-model="rule.selectedTargetValueT" rz-slider-options="slider.options"></rzslider>
+<!--                    <input type="range" id="targetValueT" ng-model="rule.selectedTargetValueT" min="0" max="50"> -->
+                </div>
+                <div ng-switch-default class="disabled-block">                
+                    <p>select trigger name</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<p class="border1px"></p>
+<div class="col-lg-12">
+
+    <button ui-sref="rules.addRuleName" class="btn btn-primary">
+        Back <span class="glyphicon glyphicon-circle-arrow-left"></span>
+    </button>
+
+    <button ui-sref="rules.addAction" class="btn btn-primary modal-btn" ng-disabled="!rule.selectedManufacturerT ||
+                !rule.selectedDeviceTypeT || !rule.selectedDeviceT ||
+                !rule.selectedTriggerT || !rule.selectedOperatorT ||
+                !rule.selectedTargetValueT">
+        Next <span class="glyphicon glyphicon-circle-arrow-right"></span>
+    </button>
+
+</div>
+

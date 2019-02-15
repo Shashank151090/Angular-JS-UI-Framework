@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--[if lt IE 10]>
+   <![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" >
+        <link rel="Shortcut Icon" href="favicon.ico" />
+        <title>Harman Lifestyle Audio Cloud</title>
+        <meta name="description" content="IOT Managed Services"/>
+        <!-- build:css vendors.min.css -->
+        <!-- bower:css -->
+        <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css" />
+        <link href="lib/rzslider.min.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="../bower_components/components-font-awesome/css/font-awesome.css" />
+        <!-- endbower -->
+        <!-- endbuild -->
+
+        <!-- build:css main.min.css -->
+        <link href="index.css" rel="stylesheet" type="text/css"/>
+        <link href="screens/dashboard/dashboard.css" rel="stylesheet" type="text/css"/>
+        <!-- endbuild -->
+    </head>
+
+    <body>
+        <div class="loading-spiner-holder" data-loading >
+            <div class="loading-spiner centered">
+                <img src="assets/loading.gif" />
+            </div>
+        </div>
+        <div ui-view></div>
+
+        <!-- build:js vendors.min.js -->
+        <!-- bower:js -->
+        <script src="../bower_components/jquery/dist/jquery.js"></script>
+        <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="../bower_components/angular/angular.js"></script>
+		<script src="lib/ui-bootstrap-tpls.min.js" type="text/javascript"></script>
+        <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+		<script src="../bower_components/angular-animate/angular-animate.js"></script>
+		<script src="https://rawgit.com/rzajac/angularjs-slider/master/dist/rzslider.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+
+        <!-- build:js main.min.js -->  
+        <script src="index.js" type="text/javascript"></script>
+        <script src="config.js" type="text/javascript"></script>
+        <script src="mainApp.js" type="text/javascript"></script>
+        <script src="services/apiService.js" type="text/javascript"></script>
+        <script src="services/principal.js" type="text/javascript"></script>
+        <script src="controls/popup/popup.js" type="text/javascript"></script>
+        <script src="screens/login/loginCtrl.js" type="text/javascript"></script>
+        <script src="screens/signup/signupCtrl.js" type="text/javascript"></script>
+        <script src="screens/auth/authCtrl.js" type="text/javascript"></script>
+        <script src="screens/dashboard/dashboard.js" type="text/javascript"></script>        
+        <script src="screens/mainMenu/mainMenu.js" type="text/javascript"></script>
+        <script src="screens/sidebar/sidebar.js" type="text/javascript"></script>
+        <script src="screens/rules/rulesCtrl.js" type="text/javascript"></script>
+        <script src="screens/users/userlist.js" type="text/javascript"></script>
+        <!-- endbuild -->
+    </body>
+
+</html>

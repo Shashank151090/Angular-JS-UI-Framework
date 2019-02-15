@@ -1,0 +1,38 @@
+<div class="col-sm-2 col-md-2 sidebar">
+    <!--    <ul class="nav nav-sidebar">
+            <li class="active"><a ui-sref="rules">Rules <span class="sr-only">(current)</span></a></li>            
+        </ul> -->
+
+    <div ng-if="oauth.alert" class="alert alert-success nest-auth alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>{{oauth.message}}</strong>
+    </div>
+
+    <div class="nav-side-menu">
+        <div class="menu-list">
+
+            <ul id="menu-content" class="menu-content collapse out">
+                <li class="active">
+                    <a ui-sref="rules">
+                        <i class="fa fa-cogs fa-lg"></i> Rules
+                    </a>
+                </li>
+
+                <li ng-click="toggleT = !toggleT;" >
+                    <a><i class="fa fa-external-link fa-lg"></i> Connect With<span class="arrow"></span></a>
+                    <ul ng-show="toggleT" class="sub-menu" id="products">
+                        <li ng-if="oauth.nest">NEST <strong style="float:right;margin-right: 10px;">Connected</strong> </li>
+                        <li ng-if="!oauth.nest" ng-click="connectWith('nest')"><a>NEST</a></li>
+                        <!--                    <li><a href="#">Smart Things</a></li>                    -->
+                    </ul> 
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,192 @@
+<div class="col-lg-12">
+    <div class="col-lg-6">
+        <div class="form-group">
+            <label for="manufacturerA">Manufacturer</label>
+            <select class="form-control" id="manufacturerA" ng-model="rule.selectedManufacturerA" 
+                    ng-options="manufacture.manufacturerName for manufacture in manufactures">              
+            </select>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group">
+            <label for="deviceTypeA">Device Type</label>
+            <select class="form-control" id="deviceTypeA" ng-model="rule.selectedDeviceTypeA" 
+                    ng-options="deviceType.deviceType for deviceType in rule.selectedManufacturerA.deviceTypes"
+                    ng-change="getDevices(rule.selectedManufacturerA, rule.selectedDeviceTypeA)">                 
+            </select>
+        </div>
+    </div>
+
+    <div class="col-lg-12 no-padding" ng-switch="switchActionFields">
+        <div ng-switch-when="HARMAN" class="col-lg-12 no-padding">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="csActionName">Action Name</label>
+                    <select class="form-control" id="csActionName" ng-model="rule.cs.action"            
+                            ng-options="cs.label for cs in clientSpecs">             
+
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-6" ng-repeat="req in rule.cs.action.requirements">                 
+                <div class="form-group">
+                    <label for="attributeType">{{req.label}}</label>
+                    <div ng-switch="req.requirementType">
+                        <!--                        <div ng-switch-when="device_list" class="custom-multi-select">
+                                                    <p style="    border: 1px solid #bbb;
+                                                       height: 35px;
+                                                       padding: 6px 12px;
+                                                       font-size: 14px;
+                                                       line-height: 1.42857143;
+                                                       color: #555;margin: 0;">
+                                                        <span>{{rule.cs.action.sDeviceCount}} / {{req.deviceList.length}} device selected</span>
+                                                    </p>
+                                                    <div style="border: 1px solid #bbb;padding: 7px 10px;color: #555;">
+                                                        <div ng-repeat="device in req.deviceList">
+                                                            <span style="    display: inline-block;
+                                                                  width: 25px;
+                                                                  height: 25px;">
+                                                            <input type="checkbox" ng-change="stateChange(device)" ng-model="cdeviceId[device.deviceId]" class="checkbox"></span>
+                                                            <span style="display: inline-block;
+                                                                  height: 25px;
+                                                                  vertical-align: top;">
+                                                                {{device.deviceName}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+                        <select ng-switch-when="device_list" class="form-control" id="attributeType" ng-model="rule.cs.req.device"            
+                                ng-options="device.name for device in req.deviceList">            
+
+                        </select>
+                        <select ng-switch-when="media_list" class="form-control" id="attributeType" ng-model="rule.cs.req.media"            
+                                ng-options="media.Title for media in req.mediaList">            
+
+                        </select>
+                        <select ng-switch-when="group_list" class="form-control" id="attributeType" ng-model="rule.cs.req.group"            
+                                ng-options="group for group in req.groupList">            
+
+                        </select>
+                        <div ng-switch-default class="disabled-block">                
+                            <p>Devices</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-6">
+                <div class="form-group">                
+                    <div ng-switch="rule.cs.action.targetValue.type">
+                        <div ng-switch-when="LIST" >
+                            <label for="targetValueC">Target Value</label>
+                            <select id="targetValueC" class="form-control" ng-model="rule.cs.targetValue"
+                                    ng-options="targetValue for targetValue in rule.cs.action.targetValue.value">
+                            </select>
+                        </div>
+                        <div ng-switch-when="TEXT">
+                            <label for="targetValueC">Target Value</label>
+                            <input type="text" class="form-control" id="targetValueC" ng-model="rule.cs.targetValue">
+                        </div>
+                        <div ng-switch-when="RANGE">
+                            <label for="targetValueC">Target Value</label>
+                             <rzslider rz-slider-model="rule.cs.targetValue" rz-slider-options="slider.options"></rzslider>
+<!--                            <input type="range" id="targetValueC" ng-model="rule.cs.targetValue" min="0" max="50"> -->
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div ng-switch-default class="col-lg-12 no-padding" >
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="device">Device</label>
+                    <select class="form-control" id="device" ng-model="rule.selectedDeviceA"            
+                            ng-options="device.name for device in rule.selectedDeviceTypeA.deviceList">             
+
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="triggerA">Action Name</label>
+                    <select class="form-control" id="triggerA" ng-model="rule.selectedTriggerA"
+                            ng-options="attribute.label for attribute in rule.selectedDeviceTypeA.attribute">                 
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="operatorA">Action Type</label>
+
+                    <div ng-if="rule.selectedTriggerA.readable == 1 && rule.selectedTriggerA.writable == 0">
+                        <select class="form-control" id="operatorA" ng-model="rule.selectedOperatorA"
+                                ng-options="actionType.name for actionType in [{'name': 'Get', 'value': 'get'}]">                 
+                        </select>
+                    </div>
+                    <div ng-if="rule.selectedTriggerA.readable == 0 && rule.selectedTriggerA.writable == 1">
+                        <select class="form-control" id="operatorA" ng-model="rule.selectedOperatorA"
+                                ng-options="actionType.name for actionType in [{'name': 'Set', 'value': 'set'}]">                 
+                        </select>
+                    </div>
+                    <div ng-if="rule.selectedTriggerA.readable == 1 && rule.selectedTriggerA.writable == 1">
+                        <select class="form-control" id="operatorA" ng-model="rule.selectedOperatorA"
+                                ng-options="actionType.name for actionType in [{'name': 'Get', 'value': 'get'},{'name': 'Set', 'value': 'set'}]">                 
+                        </select>
+                    </div>
+                    <div ng-if="!rule.selectedTriggerA.readable && !rule.selectedTriggerA.writable" class="disabled-block">                
+                        <p>action type</p>
+                    </div>
+                    <!--        <select class="form-control" id="operatorA" ng-model="rule.selectedOperatorA"
+                                    ng-options="operator.operatorType for operator in rule.selectedTriggerA.operators">                 
+                            </select>-->
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="targetValueA">Target Value</label>
+
+                    <div ng-if="(rule.selectedTriggerA.readable == 0 && rule.selectedTriggerA.writable == 1) ||
+                                    (rule.selectedTriggerA.readable == 1 && rule.selectedTriggerA.writable == 1)">
+                        <div ng-switch="rule.selectedTriggerA.targetValue.type">
+                            <div ng-switch-when="LIST" >
+                                <select id="targetValueA" class="form-control" ng-model="rule.selectedTargetValueA"
+                                        ng-options="targetValue for targetValue in rule.selectedTriggerA.targetValue.values">
+                                </select>
+                            </div>
+                            <div ng-switch-when="TEXT">
+                                <input type="text" class="form-control" id="targetValueA" ng-model="rule.selectedTargetValueA">
+                            </div>
+                            <div ng-switch-when="RANGE">
+                                <rzslider rz-slider-model="rule.selectedTargetValueA" rz-slider-options="slider.options"></rzslider>
+<!--                                <input type="range" ng-model="rule.selectedTargetValueA" id="targetValueA" min="1" max="50"> -->
+                            </div>
+                            <div ng-switch-default class="disabled-block">                
+                                <p>select trigger name</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-if="(rule.selectedTriggerA.readable == 1 && rule.selectedTriggerA.writable == 0) ||
+                                    (!rule.selectedTriggerA.readable && !rule.selectedTriggerA.writable)">
+                        <div class="disabled-block">                
+                            <p>select trigger name</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<p class="border1px"></p>
+
+<div class="col-lg-12">
+    <button ui-sref="rules.addTrigger" class="btn btn-primary">
+        Back <span class="glyphicon glyphicon-circle-arrow-left"></span>
+    </button>
+
+    <button type="button" class="btn btn-primary modal-btn" ng-click="addRuleHandler()">Add</button>
+
+</div>

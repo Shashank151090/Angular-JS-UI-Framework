@@ -1,0 +1,49 @@
+<div class="col-sm-10 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    
+    <h1 class="page-header">Rules</h1>
+    <div class="col-lg-12 btn-container">
+        <button class="btn btn-primary" ng-click="addRulesModalToggle()">Add Rules</button>
+    </div>
+    
+    <div class="col-lg-12">
+        
+        <div class="alert alert-info" role="alert" ng-if="!rulesList['rules']">
+            <strong>You have not created any rules yet.</strong>
+        </div>
+        
+        <table class="table table-bordered" ng-if="rulesList['rules']"> 
+            <thead> 
+                <tr> 
+                    <th>Rule Name</th> 
+                    <th>Trigger</th> 
+                    <th>Action</th> 
+                </tr> 
+            </thead> 
+            <tbody>            
+                
+                <tr ng-repeat="rule in rulesList['rules']">
+                    <td>{{rule.ruleName}}</td>
+                    <td>
+                        <p><strong>Manufacturer: </strong> <span>{{rule.trigger.manufacturer.manufacturerName}}</span></p>
+                        <p><strong>Device Id: </strong> <span>{{rule.trigger.device.deviceId}}</span> </p>
+                        <p><strong>Attribute: </strong> <span>{{rule.trigger.attribute.label}} </span> </p>
+                        <p><strong>Operator: </strong> <span>{{rule.trigger.operator.operatorType}} </span> </p>
+                        <p><strong>Value</strong> <span>{{rule.trigger.value}}</span></p>
+                    </td>
+                    <td>
+                        <p><strong>Manufacturer: </strong> <span>{{rule.actions[0].manufacturer.manufacturerName}}</span> </p>
+                        <p><strong>Device Id: </strong> <span>{{rule.actions[0].device.deviceId}} </span></p>
+                        <p><strong>Device Type: </strong> <span>{{rule.actions[0].device.deviceType.deviceType}} </span></p>
+                        <p><strong>Attribute: </strong> <span>{{rule.actions[0].attribute.id}} </span></p>
+                        <p><strong>Value</strong> <span>{{rule.actions[0].value}} </span></p>
+                    </td>
+                </tr>
+                
+            </tbody> 
+        </table>
+    </div>
+    
+    <modal title="Add Rule" visible="showModal" to-state="rules">
+        <div ng-include src="ruleModalTemp"></div>
+    </modal>
+</div>

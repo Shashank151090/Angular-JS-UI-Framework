@@ -1,0 +1,16 @@
+<div class="col-lg-12" id="ruleNameInputContainer">
+    <div class="col-lg-6">
+        <div class="form-group">
+            <label for="targetValueT">Rule Name</label>
+            <input type="text" class="form-control" id="ruleName" ng-model="rule.ruleName">
+        </div>
+    </div>
+</div>
+<p class="border1px"></p>
+<div class="col-lg-12">
+
+    <button ui-sref="rules.addTrigger" class="btn btn-primary modal-btn" ng-disabled="!rule.ruleName">
+        Next <span class="glyphicon glyphicon-circle-arrow-right"></span>
+    </button>
+
+</div>

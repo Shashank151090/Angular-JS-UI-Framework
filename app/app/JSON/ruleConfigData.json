@@ -1,0 +1,381 @@
+[
+  {
+    "manufacturerName": "Harman",
+    "deviceTypes": [
+      {
+        "deviceTypeId": "1",
+        "deviceType": "speaker",
+        "attribute": [
+          {
+            "id": "001",
+            "label": "mic_input",
+            "unit": "",
+            "readable": 1,
+            "writable": 0,
+            "operators": [
+              {
+                "operatorId": "5",
+                "operatorType": "Equals",
+                "operatorFor": "String",
+                "operatorSymbol": "="
+              },
+              {
+                "operatorId": "6",
+                "operatorType": "Not Equals",
+                "operatorFor": "String",
+                "operatorSymbol": "!="
+              }
+            ],
+            "targetValue": {
+              "type": "TEXT",
+              "values": []
+            }
+          },
+          {
+            "id": "010",
+            "label": "volume",
+            "unit": "%(percent)",
+            "readable": 1,
+            "writable": 0,
+            "operators": [
+              {
+                "operatorId": "1",
+                "operatorType": "Equal",
+                "operatorFor": "int",
+                "operatorSymbol": "="
+              },
+              {
+                "operatorId": "2",
+                "operatorType": "Not Equal",
+                "operatorFor": "int",
+                "operatorSymbol": "!="
+              },
+              {
+                "operatorId": "3",
+                "operatorType": "Less Than",
+                "operatorFor": "int",
+                "operatorSymbol": "<"
+              },
+              {
+                "operatorId": "4",
+                "operatorType": "Greater Than",
+                "operatorFor": "int",
+                "operatorSymbol": ">"
+              }
+            ],
+            "targetValue": {
+              "type": "RANGE",
+              "values": [
+                "0-100"
+              ]
+            }
+          },
+          {
+            "id": "011",
+            "label": "audio_output",
+            "unit": "",
+            "readable": 0,
+            "writable": 1,
+            "operators": [],
+            "targetValue": {
+              "type": "TEXT",
+              "values": []
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "manufacturerName": "Nest",
+    "deviceTypes": [
+      {
+        "deviceTypeId": "3",
+        "deviceType": "cameras",
+        "attribute": [
+          {
+            "id": "is_online",
+            "label": "Online",
+            "unit": "",
+            "readable": 1,
+            "writable": 1,
+            "operators": [
+              {
+                "operatorId": "5",
+                "operatorType": "Equals",
+                "operatorFor": "String",
+                "operatorSymbol": "="
+              },
+              {
+                "operatorId": "6",
+                "operatorType": "Not Equals",
+                "operatorFor": "String",
+                "operatorSymbol": "!="
+              }
+            ],
+            "targetValue": {
+              "type": "TEXT",
+              "values": []
+            }
+          }
+        ]
+      },
+      {
+        "deviceTypeId": "2",
+        "deviceType": "smoke_co_alarms",
+        "attribute": [
+          {
+            "id": "co_alarm_state",
+            "label": "CO alarm status",
+            "unit": "",
+            "readable": 1,
+            "writable": 0,
+            "operators": [
+              {
+                "operatorId": "5",
+                "operatorType": "Equals",
+                "operatorFor": "String",
+                "operatorSymbol": "="
+              },
+              {
+                "operatorId": "6",
+                "operatorType": "Not Equals",
+                "operatorFor": "String",
+                "operatorSymbol": "!="
+              }
+            ],
+            "targetValue": {
+              "type": "RANGE",
+              "values": [
+                "1",
+                "100"
+              ]
+            }
+          },
+          {
+            "id": "smoke_alarm_state",
+            "label": "Smoke alarm status",
+            "unit": "",
+            "readable": 1,
+            "writable": 0,
+            "operators": [
+              {
+                "operatorId": "5",
+                "operatorType": "Equals",
+                "operatorFor": "String",
+                "operatorSymbol": "="
+              },
+              {
+                "operatorId": "6",
+                "operatorType": "Not Equals",
+                "operatorFor": "String",
+                "operatorSymbol": "!="
+              }
+            ],
+            "targetValue": {
+              "type": "TEXT",
+              "values": []
+            }
+          }
+        ]
+      },
+      {
+        "deviceTypeId": "4",
+        "deviceType": "structures",
+        "attribute": [
+          {
+            "id": "away",
+            "label": "Status",
+            "unit": "",
+            "readable": 1,
+            "writable": 1,
+            "operators": [
+              {
+                "operatorId": "5",
+                "operatorType": "Equals",
+                "operatorFor": "String",
+                "operatorSymbol": "="
+              },
+              {
+                "operatorId": "6",
+                "operatorType": "Not Equals",
+                "operatorFor": "String",
+                "operatorSymbol": "!="
+              }
+            ],
+            "targetValue": {
+              "type": "TEXT",
+              "values": []
+            }
+          }
+        ]
+      },
+      {
+        "deviceTypeId": "1",
+        "deviceType": "thermostats",
+        "attribute": [
+          {
+            "id": "ambient_temperature_c",
+            "label": "Current Temperature Celsius",
+            "unit": "c",
+            "readable": 1,
+            "writable": 0,
+            "operators": [
+              {
+                "operatorId": "1",
+                "operatorType": "Equal",
+                "operatorFor": "int",
+                "operatorSymbol": "="
+              },
+              {
+                "operatorId": "2",
+                "operatorType": "Not Equal",
+                "operatorFor": "int",
+                "operatorSymbol": "!="
+              },
+              {
+                "operatorId": "3",
+                "operatorType": "Less Than",
+                "operatorFor": "int",
+                "operatorSymbol": "<"
+              },
+              {
+                "operatorId": "4",
+                "operatorType": "Greater Than",
+                "operatorFor": "int",
+                "operatorSymbol": ">"
+              }
+            ],
+            "targetValue": {
+              "type": "RANGE",
+              "values": [
+                "1",
+                "40"
+              ]
+            }
+          },
+          {
+            "id": "ambient_temperature_f",
+            "label": "Current Temperature Fahrenheit",
+            "unit": "f",
+            "readable": 1,
+            "writable": 0,
+            "operators": [
+              {
+                "operatorId": "1",
+                "operatorType": "Equal",
+                "operatorFor": "int",
+                "operatorSymbol": "="
+              },
+              {
+                "operatorId": "2",
+                "operatorType": "Not Equal",
+                "operatorFor": "int",
+                "operatorSymbol": "!="
+              },
+              {
+                "operatorId": "3",
+                "operatorType": "Less Than",
+                "operatorFor": "int",
+                "operatorSymbol": "<"
+              },
+              {
+                "operatorId": "4",
+                "operatorType": "Greater Than",
+                "operatorFor": "int",
+                "operatorSymbol": ">"
+              }
+            ],
+            "targetValue": {
+              "type": "RANGE",
+              "values": [
+                "1",
+                "40"
+              ]
+            }
+          },
+          {
+            "id": "target_temperature_c",
+            "label": "Target Temperature Celsius",
+            "unit": "c",
+            "readable": 1,
+            "writable": 1,
+            "operators": [
+              {
+                "operatorId": "1",
+                "operatorType": "Equal",
+                "operatorFor": "int",
+                "operatorSymbol": "="
+              },
+              {
+                "operatorId": "2",
+                "operatorType": "Not Equal",
+                "operatorFor": "int",
+                "operatorSymbol": "!="
+              },
+              {
+                "operatorId": "3",
+                "operatorType": "Less Than",
+                "operatorFor": "int",
+                "operatorSymbol": "<"
+              },
+              {
+                "operatorId": "4",
+                "operatorType": "Greater Than",
+                "operatorFor": "int",
+                "operatorSymbol": ">"
+              }
+            ],
+            "targetValue": {
+              "type": "RANGE",
+              "values": [
+                "1",
+                "40"
+              ]
+            }
+          },
+          {
+            "id": "target_temperature_f",
+            "label": "Target Temperature Fahrenheit",
+            "unit": "f",
+            "readable": 1,
+            "writable": 1,
+            "operators": [
+              {
+                "operatorId": "1",
+                "operatorType": "Equal",
+                "operatorFor": "int",
+                "operatorSymbol": "="
+              },
+              {
+                "operatorId": "2",
+                "operatorType": "Not Equal",
+                "operatorFor": "int",
+                "operatorSymbol": "!="
+              },
+              {
+                "operatorId": "3",
+                "operatorType": "Less Than",
+                "operatorFor": "int",
+                "operatorSymbol": "<"
+              },
+              {
+                "operatorId": "4",
+                "operatorType": "Greater Than",
+                "operatorFor": "int",
+                "operatorSymbol": ">"
+              }
+            ],
+            "targetValue": {
+              "type": "RANGE",
+              "values": [
+                "1",
+                "40"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

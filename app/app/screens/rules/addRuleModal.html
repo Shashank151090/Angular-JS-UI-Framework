@@ -1,0 +1,57 @@
+<div class="multi-level-form-container">
+    <div id="multi-level-form-btn">
+        <ul>
+            <li ui-sref-active="active" ui-sref=".addRuleName"
+                ng-class="{filled : (rule.ruleName)}">
+                <a ui-sref-active="active" ui-sref=".addRuleName">
+                    <span class="badge">1</span> 
+                    <span>Rule Name</span>
+                </a>
+            </li>
+            
+            <li ng-if="!rule.ruleName">
+                <a>
+                    <span class="badge">2</span> 
+                    <span>Trigger</span>
+                </a>
+            </li>
+            
+            <li ng-if="rule.ruleName" ui-sref-active="active" ui-sref=".addTrigger"
+                ng-class="{filled : (rule.selectedManufacturerT && rule.selectedDeviceTypeT && 
+                       rule.selectedDeviceT && rule.selectedTriggerT && rule.selectedOperatorT &&
+                       rule.selectedTargetValueT)}">
+                <a ui-sref-active="active" ui-sref=".addTrigger">
+                    <span class="badge">2</span> 
+                    <span>Trigger</span>
+                </a>
+            </li>
+            
+            <li ng-if="!rule.ruleName || !rule.selectedManufacturerT || !rule.selectedDeviceTypeT || 
+                        !rule.selectedDeviceT || !rule.selectedTriggerT || !rule.selectedOperatorT ||
+                        !rule.selectedTargetValueT">
+                <a>
+                    <span class="badge">3</span> 
+                    <span>Action</span>
+                </a>
+            </li>
+            
+            <li ng-if="rule.ruleName && rule.selectedManufacturerT && rule.selectedDeviceTypeT && 
+                       rule.selectedDeviceT && rule.selectedTriggerT && rule.selectedOperatorT &&
+                       rule.selectedTargetValueT"
+                ng-class="{filled : (rule.selectedManufacturerA && rule.selectedDeviceTypeA && 
+                       rule.selectedDeviceA && rule.selectedTriggerA && rule.selectedOperatorA &&
+                       rule.selectedTargetValueA)}"
+                ui-sref-active="active" 
+                ui-sref=".addAction" disabled>
+                <a ui-sref-active="active" ui-sref=".addAction">
+                    <span class="badge">3</span> 
+                    <span>Action</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <form>
+        <div class="rule-form-views" ui-view></div>    
+    </form>
+</div>
+

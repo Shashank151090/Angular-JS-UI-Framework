@@ -1,0 +1,52 @@
+[
+  {
+    "id": "play_hub_media_selected_speakers",
+    "label": "Play Hub Media On Selected Speakers",
+    "unit": "",
+    "requirements": [
+      {
+        "id": "device_list",
+        "label": "Select device for action : ",
+        "multipleSelection": 1,
+        "deviceList": [
+          {
+            "deviceId": "1",
+            "deviceName": "Device 1"
+          },
+          {
+            "deviceId": "2",
+            "deviceName": "Device 2"
+          }
+        ]
+      },
+      {
+        "id": "media_list",
+        "label": "Select media for action : ",
+        "multipleSelection": 0,
+        "mediaList": [
+          {
+            "PersistentID": "1",
+            "Title": "Media 1"
+          },
+          {
+            "PersistentID": "2",
+            "Title": "Media 2"
+          }
+        ]
+      },
+      {
+        "id": "group_list",
+        "label": "Select group for action : ",
+        "multipleSelection": 0,
+        "groupList": [
+          "Group 1",
+          "Group 2"
+        ]
+      }
+    ],
+    "targetValue": {
+      "type": "LIST",
+      "value":["value 1", "value 2", "value 3"]
+    }
+  }
+]
